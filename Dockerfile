@@ -21,6 +21,8 @@ RUN git clone https://github.com/yonaskolb/Mint.git \
 	&& cd .. \
 	&& rm -rf Mint
 
-RUN mint install realm/SwiftLint
+RUN mint install realm/SwiftLint@0.40.1
+
+RUN mint install nicklockwood/SwiftFormat@0.46.1
 
 WORKDIR /tool
