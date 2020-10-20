@@ -9,12 +9,6 @@ RUN apt-get update \
 
 RUN npm install -g danger
 
-RUN git clone https://github.com/danger/danger-swift.git \
-	&& cd danger-swift \
-	&& make install \
-	&& cd .. \
-	&& rm -rf danger-swift
-
 RUN git clone https://github.com/yonaskolb/Mint.git \
 	&& cd Mint \
 	&& make install \
@@ -25,4 +19,8 @@ RUN mint install realm/SwiftLint@0.40.3
 
 RUN mint install nicklockwood/SwiftFormat@0.47.0
 
+COPY src /tool
+
 WORKDIR /tool
+
+RUN swift run danger-swift
